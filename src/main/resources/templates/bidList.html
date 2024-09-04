@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Все заявки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Список всех заявок</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th>Адрес улицы</th>
+            <th>Город</th>
+            <th>Номер дома</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bid : ${bids}">
+            <td th:text="${bid.id}"></td>
+            <td th:text="${bid.name}"></td>
+            <td th:text="${bid.phone}"></td>
+            <td th:text="${bid.streetAddress}"></td>
+            <td th:text="${bid.city}"></td>
+            <td th:text="${bid.homeNumber}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

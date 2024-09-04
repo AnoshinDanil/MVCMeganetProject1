@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Подключение к интернету</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Оставить заявку на подключение к интернету</h2>
+    <form th:action="@{/bid}" th:object="${bid}" method="post">
+
+        <div>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+        </div>
+
+        <div>
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" th:field="*{phone}" required>
+            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error"></div>
+        </div>
+
+        <div>
+            <label for="streetAddress">Адрес улицы:</label>
+            <input type="text" id="streetAddress" th:field="*{streetAddress}" required>
+            <div th:if="${#fields.hasErrors('streetAddress')}" th:errors="*{streetAddress}" class="error"></div>
+        </div>
+
+        <div>
+            <label for="city">Город:</label>
+            <input type="text" id="city" th:field="*{city}" required>
+            <div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></div>
+        </div>
+
+        <div>
+            <label for="homeNumber">Номер дома:</label>
+            <input type="text" id="homeNumber" th:field="*{homeNumber}" required>
+            <div th:if="${#fields.hasErrors('homeNumber')}" th:errors="*{homeNumber}" class="error"></div>
+        </div>
+
+        <input type="submit" value="Отправить заявку">
+
+        <div th:if="${message} != null">
+            <p th:text="${message}"></p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
