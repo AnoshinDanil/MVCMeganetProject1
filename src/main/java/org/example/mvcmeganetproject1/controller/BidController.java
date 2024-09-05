@@ -5,7 +5,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.mvcmeganetproject1.model.Bid;
 import org.example.mvcmeganetproject1.model.City;
-import org.example.mvcmeganetproject1.model.Street;
 import org.example.mvcmeganetproject1.service.BidService;
 import org.example.mvcmeganetproject1.service.CityService;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor
