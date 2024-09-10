@@ -20,9 +20,9 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public boolean searchStreetInCity(City city,String streetName) {
+    public boolean searchStreetInCity(City city, String streetName) {
         for (Street street : city.getStreets()) {
-            if (street.getStreetName().equalsIgnoreCase(streetName)){
+            if (street.getStreetName().equalsIgnoreCase(streetName)) {
                 return true;
             }
         }

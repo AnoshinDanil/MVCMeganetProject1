@@ -46,17 +46,16 @@ public class BidController {
             return "bid-form";
         }
 
-        City city1 = optionalCity.get();
-        boolean flag = cityService.searchStreetInCity(city1,bid.getStreetAddress());
+        bidService.saveBid(bid);
 
-        if (!flag) {
-            model.addAttribute("message","Ваша улица не обслуживается");
+        if (!bid.isConnectable()) {
+            model.addAttribute("message", "Улица не обслуживается. Если будет больше заявок с вашей улицы, с вами свяжутся.");
+            return "bid-form";
+        } else {
+            model.addAttribute("message", "Заявка успешно отправлена. Мы с вами свяжемся.");
             return "bid-form";
         }
-
-
-        bidService.saveBid(bid);
-        return "redirect:/index";
+        //return "redirect:/index";
     }
 
     @GetMapping("/bids")

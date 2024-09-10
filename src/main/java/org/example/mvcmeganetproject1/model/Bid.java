@@ -40,4 +40,7 @@ public class Bid {
     @Column(name = "home_number")
     String homeNumber;
 
+    @Column(name = "connectable")
+    private boolean connectable;
+
 }
