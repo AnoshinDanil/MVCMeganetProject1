@@ -21,6 +21,6 @@ public class Street {
     private String streetName;
 
     @Column
-    @ManyToMany(mappedBy = "streets")
+    @ManyToMany(mappedBy = "streets",fetch = FetchType.EAGER)
     private Set<City> cities;
 }

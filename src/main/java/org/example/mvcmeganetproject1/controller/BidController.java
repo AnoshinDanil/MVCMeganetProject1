@@ -7,6 +7,7 @@ import org.example.mvcmeganetproject1.model.Bid;
 import org.example.mvcmeganetproject1.model.City;
 import org.example.mvcmeganetproject1.service.BidService;
 import org.example.mvcmeganetproject1.service.CityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,12 +50,11 @@ public class BidController {
         bidService.saveBid(bid);
 
         if (!bid.isConnectable()) {
-            model.addAttribute("message", "Улица не обслуживается. Если будет больше заявок с вашей улицы, с вами свяжутся.");
-            return "bid-form";
+            model.addAttribute("message", "Ваш город или улица не обслуживается. Если будет больше заявок с вашей улицы, с вами свяжутся.");
         } else {
             model.addAttribute("message", "Заявка успешно отправлена. Мы с вами свяжемся.");
-            return "bid-form";
         }
+        return "bid-form";
         //return "redirect:/index";
     }
 
