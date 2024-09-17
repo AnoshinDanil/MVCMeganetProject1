@@ -40,7 +40,7 @@ class CityServiceImplTest {
         City city = new City();
         city.setName("Москва");
 
-        when(cityRepository.findCityByName("Москва")).thenReturn(Optional.of(city));
+        when(cityRepository.findCityByNameWithStreets("Москва")).thenReturn(Optional.of(city));
         Optional<City> moscowCity = cityService.findCityByName("Москва");
 
         assertTrue(moscowCity.isPresent());
@@ -54,7 +54,7 @@ class CityServiceImplTest {
         City city = new City();
         city.setName("Вологда");
 
-        when(cityRepository.findCityByName("Вологда")).thenReturn(Optional.empty());
+        //when(cityRepository.findCityByName("Вологда")).thenReturn(Optional.empty());
         Optional<City> vologdaCity = cityService.findCityByName(city.getName());
 
         assertFalse(vologdaCity.isPresent());

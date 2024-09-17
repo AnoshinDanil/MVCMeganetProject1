@@ -22,10 +22,11 @@ public class BidServiceImpl implements BidService {
 
     @Override
     public boolean saveBid(Bid bid) {
-        if (searchStreetInCity(bid)) {
-            bid.setConnectable(true);
+        if (!searchStreetInCity(bid)) {
             return false;
         }
+
+        bid.setConnectable(true);
         bidRepository.save(bid);
         return true;
     }
@@ -36,13 +37,12 @@ public class BidServiceImpl implements BidService {
         if (cityOptional.isEmpty()) {
             return false;
         }
+        log.info(bid.toString() + " bid");
 
         log.info(cityOptional.get().getStreets().toString());
         City city = cityOptional.get();
-        boolean containsStreet = cityService.searchStreetInCity(city, bid.getCity());
-
-        return containsStreet;
-
+        boolean s = cityService.searchStreetInCity(city, bid.getStreetAddress());
+        return s;
     }
 
 

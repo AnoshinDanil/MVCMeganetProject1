@@ -17,4 +17,6 @@ public interface CityRepository extends JpaRepository<City, Integer> {
 
     @Query("SELECT c FROM City c JOIN FETCH c.streets WHERE c.name = :name")
     Optional<City> findCityByNameWithStreets(@Param("name") String name);
+
+    City findCityByName(String nameCity);
 }
